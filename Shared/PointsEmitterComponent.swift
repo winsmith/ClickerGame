@@ -6,7 +6,6 @@
 //  Copyright © 2019 breakthesystem. All rights reserved.
 //
 
-import Cocoa
 import GameplayKit
 
 class PointsEmitterComponent: GKComponent {

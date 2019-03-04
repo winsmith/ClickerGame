@@ -6,7 +6,6 @@
 //  Copyright © 2019 breakthesystem. All rights reserved.
 //
 
-import Cocoa
 import GameplayKit
 
 class GeometricComponent: GKComponent {
@@ -24,7 +23,7 @@ class GeometricComponent: GKComponent {
             
             node.run(SKAction.repeatForever(SKAction.sequence([
                 SKAction.wait(forDuration: actionLength),
-                SKAction.applyForce(CGVector(dx: 0, dy: node.frame.width), duration: 0.1),
+                SKAction.applyForce(CGVector(dx: 0, dy: node.frame.width / 10), duration: 0.1),
                 SKAction.scale(to: 1.1, duration: 0.1),
                 SKAction.scale(to: 1.0, duration: 0.1),
             ])))

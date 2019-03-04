@@ -6,7 +6,6 @@
 //  Copyright © 2019 breakthesystem. All rights reserved.
 //
 
-import Cocoa
 import SpriteKit
 import GameplayKit
 
@@ -20,12 +19,16 @@ class EmojiFactory {
     }
     
     func gimmeTheBestEmitterICanGet(withPointsReceiver pointsReceiver: PointsReceiverComponent) -> (price: Double, node: SKLabelNode, entity: GKEntity)? {
+        return previewTheBestEmitterICanGet(withPointsReceiver: pointsReceiver, withIncrement: true)
+    }
+    
+    func previewTheBestEmitterICanGet(withPointsReceiver pointsReceiver: PointsReceiverComponent, withIncrement: Bool = false) -> (price: Double, node: SKLabelNode, entity: GKEntity)? {
         let labelNode = self.emitterIconPrototype.copy() as! SKLabelNode
         
         var biggestFoundOutput: Double?
         var biggestFoundPrice: Double?
         var biggestPosition: Int = 0
-        for position in 0...progression.count {
+        for position in 0..<progression.count {
             let price = self.price(for: position)
             if price <= pointsReceiver.points && output(for: position) > (biggestFoundOutput ?? 0) {
                 biggestFoundPrice = price
@@ -49,8 +52,9 @@ class EmojiFactory {
         entity.addComponent(pointsEmitterComponent)
         entity.addComponent(GeometricComponent(node: labelNode, pointsEmitter: pointsEmitterComponent))
         
-        print(progression[biggestPosition], biggestPrice, biggestOutput)
-        increment(position: biggestPosition)
+        if withIncrement {
+            increment(position: biggestPosition)
+        }
         
         return (biggestPrice, labelNode, entity)
     }
@@ -64,7 +68,7 @@ class EmojiFactory {
     
     private func basePrice(for position: Int) -> Double {
         if position == 0 { return 1 }
-        return basePrice(for: position - 1) * 3
+        return basePrice(for: position - 1) * 2.5
     }
     
     private func price(for position: Int) -> Double {

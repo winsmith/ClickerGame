@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Clicker Game Mac.xcodeproj">
+      location = "self:/Users/breakthesystem/Repositories/Clicker Game Mac/Clicker Game.xcodeproj">
    </FileRef>
 </Workspace>
