@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC872CBE222D8EEA00B09AAC /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC872CBD222D8EEA00B09AAC /* PhysicsComponent.swift */; };
+		DC872CC0222D9CA800B09AAC /* EmojiFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC872CBF222D9CA800B09AAC /* EmojiFactory.swift */; };
 		DCEA62F8222D6946005DA1EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA62F7222D6946005DA1EB /* AppDelegate.swift */; };
 		DCEA62FA222D6946005DA1EB /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DCEA62F9222D6946005DA1EB /* GameScene.sks */; };
 		DCEA62FC222D6946005DA1EB /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = DCEA62FB222D6946005DA1EB /* Actions.sks */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC872CBD222D8EEA00B09AAC /* PhysicsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponent.swift; sourceTree = "<group>"; };
+		DC872CBF222D9CA800B09AAC /* EmojiFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiFactory.swift; sourceTree = "<group>"; };
 		DCEA62F4222D6945005DA1EB /* Clicker Game Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clicker Game Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCEA62F7222D6946005DA1EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCEA62F9222D6946005DA1EB /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -111,11 +115,13 @@
 				DCEA62F7222D6946005DA1EB /* AppDelegate.swift */,
 				DCEA62F9222D6946005DA1EB /* GameScene.sks */,
 				DCEA62FB222D6946005DA1EB /* Actions.sks */,
+				DC872CBF222D9CA800B09AAC /* EmojiFactory.swift */,
 				DCEA62FD222D6946005DA1EB /* GameScene.swift */,
 				DCEA62FF222D6946005DA1EB /* ViewController.swift */,
 				DCEA632D222D761F005DA1EB /* PointsEmitterComponent.swift */,
 				DCEA632F222D8171005DA1EB /* PointsReceiverComponent.swift */,
 				DCEA6331222D85C6005DA1EB /* GeometricComponent.swift */,
+				DC872CBD222D8EEA00B09AAC /* PhysicsComponent.swift */,
 				DCEA6301222D6948005DA1EB /* Assets.xcassets */,
 				DCEA6303222D6948005DA1EB /* Main.storyboard */,
 				DCEA6306222D6948005DA1EB /* Info.plist */,
@@ -275,6 +281,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCEA6300222D6946005DA1EB /* ViewController.swift in Sources */,
+				DC872CC0222D9CA800B09AAC /* EmojiFactory.swift in Sources */,
+				DC872CBE222D8EEA00B09AAC /* PhysicsComponent.swift in Sources */,
 				DCEA6332222D85C6005DA1EB /* GeometricComponent.swift in Sources */,
 				DCEA632E222D761F005DA1EB /* PointsEmitterComponent.swift in Sources */,
 				DCEA6330222D8171005DA1EB /* PointsReceiverComponent.swift in Sources */,

@@ -10,11 +10,12 @@ import Cocoa
 import GameplayKit
 
 class PointsEmitterComponent: GKComponent {
-    let pointsPerSecond = 0.1
+    let pointsPerSecond: Double
     let receiver: PointsReceiverComponent
     
-    required init(receiver: PointsReceiverComponent) {
+    required init(receiver: PointsReceiverComponent, pointsPerSecond: Double = 0.1) {
         self.receiver = receiver
+        self.pointsPerSecond = pointsPerSecond
         super.init()
     }
     
@@ -25,11 +26,5 @@ class PointsEmitterComponent: GKComponent {
     override func update(deltaTime seconds: TimeInterval) {
         let pointsToEmit = pointsPerSecond * seconds
         receiver.receive(points: pointsToEmit)
-    }
-}
-
-class TestComponent: GKComponent {
-    override func update(deltaTime seconds: TimeInterval) {
-        print(seconds)
     }
 }

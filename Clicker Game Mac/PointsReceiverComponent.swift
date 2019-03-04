@@ -10,9 +10,13 @@ import Cocoa
 import GameplayKit
 
 class PointsReceiverComponent: GKComponent {
-    private(set) var points: Double = 0.0
+    private(set) var points: Double = 1.0
     
     func receive(points: Double) {
         self.points += points
+    }
+    
+    func pay(points: Double) {
+        self.points -= points
     }
 }

@@ -18,7 +18,10 @@ class GameScene: SKScene {
     private var lastUpdateTime : TimeInterval = 0
     private var spinnyNode : SKShapeNode?
     private var label : SKLabelNode?
-    private var emitterIconPrototype: SKLabelNode?
+    
+    private var emojiFactory: EmojiFactory?
+    
+    private let numberFormatter = NumberFormatter()
     
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
@@ -31,36 +34,51 @@ class GameScene: SKScene {
         }
         
         // Get label node from scene and store it for use later
-        self.emitterIconPrototype = self.childNode(withName: "//emitterIconPrototype") as? SKLabelNode
-        if let emitterIconPrototype = self.emitterIconPrototype {
+        let emitterIconPrototype = self.childNode(withName: "//emitterIconPrototype") as? SKLabelNode
+        
+        if let emitterIconPrototype = emitterIconPrototype {
             emitterIconPrototype.alpha = 0.0
+            
+            emojiFactory = EmojiFactory(emitterIconPrototype: emitterIconPrototype)
         }
+        
+        // Border around scene
+        physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
     }
     
     func setupScene() {
+        // Setup Entities
         let pointsReceiverEntity = GKEntity()
         pointsReceiverEntity.addComponent(pointsReceiver)
         entities.append(pointsReceiverEntity)
         
-        let exampleClicker = GKEntity()
-        exampleClicker.addComponent(PointsEmitterComponent(receiver: pointsReceiver))
-        entities.append(exampleClicker)
+        // Setup Number Formatter
+        numberFormatter.groupingSeparator = "."
+        numberFormatter.roundingMode = .floor
     }
     
     override func mouseUp(with event: NSEvent) {
-        let pos = event.location(in: self)
+        guard let emitter = emojiFactory?.gimmeTheBestEmitterICanGet(withPointsReceiver: pointsReceiver) else { return }
         
-        if let n = self.emitterIconPrototype?.copy() as! SKLabelNode? {
-            n.position = pos
-            self.addChild(n)
-            
-            let entity = GKEntity()
-            entity.addComponent(GeometricComponent(node: n))
-            entity.addComponent(PointsEmitterComponent(receiver: pointsReceiver))
-            entities.append(entity)
-            
-            n.run(SKAction.fadeIn(withDuration: 0.5))
-        }
+        // Pay the price
+        pointsReceiver.pay(points: emitter.price)
+        
+        // Set correct position
+        let pos = event.location(in: self)
+        emitter.node.position = pos
+        self.addChild(emitter.node)
+        emitter.node.run(SKAction.fadeIn(withDuration: 2.0))
+        
+        // Add price label
+        let pricelabel = SKLabelNode(text: numberFormatter.string(from: NSNumber(value: emitter.price)))
+        self.addChild(pricelabel)
+        pricelabel.fontSize = 10
+        pricelabel.position = pos
+        pricelabel.run(SKAction.move(by: CGVector(dx: 0, dy: 20), duration: 1.0))
+        pricelabel.run(SKAction.sequence([SKAction.fadeOut(withDuration: 1.0), SKAction.removeFromParent()]))
+        
+        // Save entities
+        entities.append(emitter.entity)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -80,7 +98,7 @@ class GameScene: SKScene {
         }
         
         // Update Label
-        label?.text = "\(Int(pointsReceiver.points))"
+        label?.text = numberFormatter.string(from: NSNumber(value: pointsReceiver.points))
         
         self.lastUpdateTime = currentTime
     }
