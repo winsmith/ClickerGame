@@ -11,6 +11,102 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    let pointsReceiver = PointsReceiverComponent()
+    var entities = [GKEntity]()
+    var graphs = [String : GKGraph]()
+    
+    private var lastUpdateTime : TimeInterval = 0
+    private var spinnyNode : SKShapeNode?
+    private var label : SKLabelNode?
+    private var emitterIconPrototype: SKLabelNode?
+    
+    override func sceneDidLoad() {
+        self.lastUpdateTime = 0
+        
+        // Get label node from scene and store it for use later
+        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
+        if let label = self.label {
+            label.alpha = 0.0
+            label.run(SKAction.fadeIn(withDuration: 2.0))
+        }
+        
+        // Get label node from scene and store it for use later
+        self.emitterIconPrototype = self.childNode(withName: "//emitterIconPrototype") as? SKLabelNode
+        if let emitterIconPrototype = self.emitterIconPrototype {
+            emitterIconPrototype.alpha = 0.0
+        }
+    }
+    
+    func setupScene() {
+        let pointsReceiverEntity = GKEntity()
+        pointsReceiverEntity.addComponent(pointsReceiver)
+        entities.append(pointsReceiverEntity)
+        
+        let exampleClicker = GKEntity()
+        exampleClicker.addComponent(PointsEmitterComponent(receiver: pointsReceiver))
+        entities.append(exampleClicker)
+    }
+    
+    override func mouseUp(with event: NSEvent) {
+        let pos = event.location(in: self)
+        
+        if let n = self.emitterIconPrototype?.copy() as! SKLabelNode? {
+            n.position = pos
+            self.addChild(n)
+            
+            let entity = GKEntity()
+            entity.addComponent(GeometricComponent(node: n))
+            entity.addComponent(PointsEmitterComponent(receiver: pointsReceiver))
+            entities.append(entity)
+            
+            n.run(SKAction.fadeIn(withDuration: 0.5))
+        }
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        // Called before each frame is rendered
+        
+        // Initialize _lastUpdateTime if it has not already been
+        if (self.lastUpdateTime == 0) {
+            self.lastUpdateTime = currentTime
+        }
+        
+        // Calculate time since last update
+        let dt = currentTime - self.lastUpdateTime
+        
+        // Update entities
+        for entity in entities {
+            entity.update(deltaTime: dt)
+        }
+        
+        // Update Label
+        label?.text = "\(Int(pointsReceiver.points))"
+        
+        self.lastUpdateTime = currentTime
+    }
+}
+
+
+
+
+
+
+/*
+
+
+//
+//  GameScene.swift
+//  Clicker Game Mac
+//
+//  Created by Daniel Jilg on 04.03.19.
+//  Copyright © 2019 breakthesystem. All rights reserved.
+//
+
+import SpriteKit
+import GameplayKit
+
+class GameScene: SKScene {
+    
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
@@ -111,3 +207,5 @@ class GameScene: SKScene {
         self.lastUpdateTime = currentTime
     }
 }
+
+ */

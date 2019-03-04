@@ -31,6 +31,8 @@ class ViewController: NSViewController {
                 // Set the scale mode to scale to fit the window
                 sceneNode.scaleMode = .aspectFill
                 
+                sceneNode.setupScene()
+                
                 // Present the scene
                 if let view = self.skView {
                     view.presentScene(sceneNode)

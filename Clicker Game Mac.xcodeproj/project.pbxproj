@@ -16,6 +16,9 @@
 		DCEA6305222D6948005DA1EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCEA6303222D6948005DA1EB /* Main.storyboard */; };
 		DCEA6311222D6948005DA1EB /* Clicker_Game_MacTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA6310222D6948005DA1EB /* Clicker_Game_MacTests.swift */; };
 		DCEA631C222D6948005DA1EB /* Clicker_Game_MacUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA631B222D6948005DA1EB /* Clicker_Game_MacUITests.swift */; };
+		DCEA632E222D761F005DA1EB /* PointsEmitterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA632D222D761F005DA1EB /* PointsEmitterComponent.swift */; };
+		DCEA6330222D8171005DA1EB /* PointsReceiverComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA632F222D8171005DA1EB /* PointsReceiverComponent.swift */; };
+		DCEA6332222D85C6005DA1EB /* GeometricComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA6331222D85C6005DA1EB /* GeometricComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,9 @@
 		DCEA6317222D6948005DA1EB /* Clicker Game MacUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Clicker Game MacUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCEA631B222D6948005DA1EB /* Clicker_Game_MacUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clicker_Game_MacUITests.swift; sourceTree = "<group>"; };
 		DCEA631D222D6948005DA1EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCEA632D222D761F005DA1EB /* PointsEmitterComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsEmitterComponent.swift; sourceTree = "<group>"; };
+		DCEA632F222D8171005DA1EB /* PointsReceiverComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsReceiverComponent.swift; sourceTree = "<group>"; };
+		DCEA6331222D85C6005DA1EB /* GeometricComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometricComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,9 @@
 				DCEA62FB222D6946005DA1EB /* Actions.sks */,
 				DCEA62FD222D6946005DA1EB /* GameScene.swift */,
 				DCEA62FF222D6946005DA1EB /* ViewController.swift */,
+				DCEA632D222D761F005DA1EB /* PointsEmitterComponent.swift */,
+				DCEA632F222D8171005DA1EB /* PointsReceiverComponent.swift */,
+				DCEA6331222D85C6005DA1EB /* GeometricComponent.swift */,
 				DCEA6301222D6948005DA1EB /* Assets.xcassets */,
 				DCEA6303222D6948005DA1EB /* Main.storyboard */,
 				DCEA6306222D6948005DA1EB /* Info.plist */,
@@ -266,6 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCEA6300222D6946005DA1EB /* ViewController.swift in Sources */,
+				DCEA6332222D85C6005DA1EB /* GeometricComponent.swift in Sources */,
+				DCEA632E222D761F005DA1EB /* PointsEmitterComponent.swift in Sources */,
+				DCEA6330222D8171005DA1EB /* PointsReceiverComponent.swift in Sources */,
 				DCEA62FE222D6946005DA1EB /* GameScene.swift in Sources */,
 				DCEA62F8222D6946005DA1EB /* AppDelegate.swift in Sources */,
 			);
